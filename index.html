@@ -615,9 +615,9 @@
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; }
+            .hero { grid-template-columns: 1fr 1fr; gap: 2rem; }
             .hero::after { display: none; }
-            .hero-image { display: none; }
+            .hero-image img { width: 100%; height: 280px; }
             .about-grid, .contact-grid, .music-grid { grid-template-columns: 1fr; gap: 2rem; }
             .pub-stats { grid-template-columns: repeat(2, 1fr); }
             .nav-links { gap: 1.2rem; }
@@ -680,7 +680,7 @@
         <div class="about-text">
             <p>I am a Postdoctoral Fellow at the University of Otago's Department of Pharmacy, working at the intersection of RNA biology, cancer genomics, and computational bioinformatics. My research focuses on developing lipid nanoparticle encapsulations for small molecules, RNA-based therapeutic strategies for brain cancers, multi-omics biomarker pipelines, and computational vaccine design.</p>
             <p>My journey has taken me from biomedical sciences in Sheffield to molecular pathology in Leicester, clinical lab training in Muscat and Karachi, and now to the cutting edge of RNA therapeutics in Dunedin. Alongside my research, I work as a Support Worker at Community Care Trust, providing person-centred care that grounds my science in real human impact.</p>
-            <p>As a shareholder of Amaroq Therapeutics, I bridge academia and biotechnology — translating discoveries into real-world applications.</p>
+            <p>I bridge academia and biotechnology — translating discoveries into real-world applications.</p>
         </div>
         <div class="about-cards">
             <div class="about-card">
@@ -693,7 +693,7 @@
             </div>
             <div class="about-card">
                 <h4>💡 Innovation & IP</h4>
-                <p>Co-inventor on lncRNA cancer target discovery platform (Otago Innovation Ltd, 2025) · Shareholder at Amaroq Therapeutics</p>
+                <p>Co-inventor on lncRNA cancer target discovery platform (Otago Innovation Ltd, 2025)</p>
             </div>
             <div class="about-card">
                 <h4>🎓 Education</h4>
