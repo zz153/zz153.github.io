@@ -3,813 +3,959 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zohaib Rana, PhD - Portfolio</title>
+    <title>Zohaib Rana, PhD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --teal: #0d9488;
+            --teal-light: #ccfbf1;
+            --teal-mid: #5eead4;
+            --teal-dark: #0f766e;
+            --ink: #0f172a;
+            --ink-mid: #334155;
+            --ink-light: #64748b;
+            --surface: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--sans);
+            background: var(--white);
+            color: var(--ink);
             line-height: 1.6;
-            color: #1a202c;
-            background: #f7fafc;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-        }
-
-        nav a {
-            color: #1a202c;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #0891b2 0%, #06b6d4 100%);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: #0891b2;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 6%;
+            height: 64px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0e7490 0%, #0891b2 50%, #06b6d4 100%);
-            position: relative;
-            overflow: hidden;
+            justify-content: space-between;
         }
 
-        .hero::before {
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-light);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--teal); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 6% 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--white);
+            position: relative;
+        }
+
+        .hero::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(100px, 100px); }
-        }
-
-        .hero-content {
-            text-align: center;
-            color: #001f3f; /* Navy blue instead of white */
-            z-index: 1;
-            padding: 2rem;
-        }
-
-        /* Profile Image Container */
-        .profile-image-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .profile-image-container img {
-            width: 100%;
+            top: 0; right: 0;
+            width: 45%;
             height: 100%;
-            object-fit: cover;
+            background: var(--surface);
+            z-index: 0;
+            clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            animation: fadeInUp 1s ease 0.1s backwards;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-        }
+        .hero-text { z-index: 1; }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s backwards;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.3s backwards;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        .cta-button {
+        .hero-tag {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #0891b2;
-            text-decoration: none;
-            border-radius: 50px;
+            background: var(--teal-light);
+            color: var(--teal-dark);
+            font-size: 0.78rem;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease 0.4s backwards;
-            margin: 0 0.5rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-button.secondary {
-            background: white;
-            color: #0891b2;
-            border: 2px solid white;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 10%;
-            background: #ffffff;
-        }
-
-        section:nth-child(even) {
-            background: #f0f9ff;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #1a202c;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #0891b2 0%, #06b6d4 100%);
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            color: #2d3748;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-content p {
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
             margin-bottom: 1.5rem;
         }
 
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
         }
 
-        .highlight-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            border-left: 4px solid #0891b2;
+        .hero h1 em {
+            font-style: italic;
+            color: var(--teal);
         }
 
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.2);
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--ink-mid);
+            line-height: 1.75;
+            max-width: 480px;
+            margin-bottom: 2.5rem;
         }
 
-        .highlight-card h3 {
-            color: #0891b2;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .highlight-card p {
-            color: #2d3748;
-        }
-
-        /* Research Section */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .research-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e2e8f0;
-        }
-
-        .research-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(8, 145, 178, 0.2);
-        }
-
-        .research-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--teal);
             color: white;
+            border: 2px solid var(--teal);
         }
 
-        .research-content {
-            padding: 1.5rem;
+        .btn-primary:hover {
+            background: var(--teal-dark);
+            border-color: var(--teal-dark);
+            transform: translateY(-2px);
         }
 
-        .research-content h3 {
-            color: #1a202c;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+        .btn-outline {
+            background: transparent;
+            color: var(--teal);
+            border: 2px solid var(--teal);
         }
 
-        .research-content p {
-            color: #2d3748;
+        .btn-outline:hover {
+            background: var(--teal-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 360px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .hero-stat-num {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--teal);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 6%;
+        }
+
+        .section-alt { background: var(--surface); }
+
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            letter-spacing: -0.02em;
+            color: var(--ink);
             margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--ink-mid);
+            max-width: 560px;
+            line-height: 1.75;
+            margin-bottom: 3.5rem;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--teal);
+        }
+
+        .about-card h4 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-card p {
+            font-size: 0.88rem;
+            color: var(--ink-light);
             line-height: 1.6;
         }
 
-        .research-link {
-            color: #0891b2;
-            text-decoration: none;
+        /* RESEARCH */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .research-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-mid));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(13, 148, 136, 0.12);
+            border-color: var(--teal-mid);
+        }
+
+        .research-card:hover::before { opacity: 1; }
+
+        .research-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--teal-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.05rem;
             font-weight: 600;
-            transition: color 0.3s;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
         }
 
-        .research-link:hover {
-            color: #06b6d4;
+        .research-card p {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            line-height: 1.7;
         }
 
-        /* Skills Section */
-        .skills-container {
+        .research-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            background: var(--teal-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+        }
+
+        /* SKILLS */
+        .skills-wrap {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 0.75rem;
+            max-width: 800px;
         }
 
-        .skill-tag {
-            background: rgba(8, 145, 178, 0.1);
-            color: #0891b2;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid rgba(8, 145, 178, 0.3);
-            transition: transform 0.3s, background 0.3s;
+        .skill {
+            background: var(--white);
+            border: 1px solid var(--border);
+            color: var(--ink-mid);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.88rem;
             font-weight: 500;
+            transition: all 0.2s;
         }
 
-        .skill-tag:hover {
-            transform: scale(1.1);
-            background: rgba(8, 145, 178, 0.2);
+        .skill:hover {
+            border-color: var(--teal);
+            color: var(--teal-dark);
+            background: var(--teal-light);
         }
 
-        /* Publications Section */
-        .publications-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        /* PUBLICATIONS */
         .pub-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
         }
 
-        .stat-card {
-            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
+        .pub-stat {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .stat-card .number {
-            font-size: 3rem;
-            font-weight: bold;
+        .pub-stat-num {
+            font-family: var(--serif);
+            font-size: 2.4rem;
+            color: var(--teal);
+            display: block;
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
-        .stat-card .label {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .pub-stat-label {
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            line-height: 1.4;
         }
 
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-content p {
-            color: #2d3748;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-
-        .contact-info p {
-            margin: 0.5rem 0;
-            color: #1a202c;
-        }
-
-        .contact-links {
+        .pub-list {
             display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .contact-links a {
-            color: #0891b2;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-links a:hover {
-            color: #06b6d4;
-        }
-
-        /* Video Grid Styles */
-        .video-grid {
+        .pub-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .pub-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            background: var(--teal-light);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .pub-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .pub-meta {
+            font-size: 0.83rem;
+            color: var(--ink-light);
+        }
+
+        .pub-journal {
+            font-style: italic;
+            color: var(--teal-dark);
+        }
+
+        .pub-link {
+            display: inline-block;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .pub-link:hover { text-decoration: underline; }
+
+        /* COMMUNITY */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .community-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+
+        .community-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .community-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .community-card p {
+            font-size: 0.88rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .community-card a {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        /* MUSIC */
+        .music-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .music-text p {
+            font-size: 1.05rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-text p {
+            font-size: 1.05rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--ink-mid);
+        }
+
+        .contact-detail span:first-child {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .contact-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
             margin-top: 2rem;
         }
 
-        .video-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--ink-mid);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s;
         }
 
-        .video-card:hover {
-            transform: translateY(-5px);
+        .contact-link:hover {
+            border-color: var(--teal);
+            color: var(--teal-dark);
+            background: var(--teal-light);
         }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Coming Soon Badge */
-        .coming-soon {
-            display: inline-block;
-            background: #fbbf24;
-            color: #78350f;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        /* Footer */
+        /* FOOTER */
         footer {
-            background: #1a202c;
-            color: #cbd5e0;
+            background: var(--ink);
+            color: #94a3b8;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 6%;
+            font-size: 0.85rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        footer a { color: var(--teal-mid); text-decoration: none; }
 
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
 
-            .hero p {
-                font-size: 1rem;
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero::after { display: none; }
+            .hero-image { display: none; }
+            .about-grid, .contact-grid, .music-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .pub-stats { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { gap: 1.2rem; }
+            .nav-links a { font-size: 0.78rem; }
+        }
 
-            section {
-                padding: 3rem 5%;
-            }
-
-            .stat-card .number {
-                font-size: 2rem;
-            }
-
-            .profile-image-container {
-                width: 150px;
-                height: 150px;
-            }
+        @media (max-width: 600px) {
+            nav { padding: 0 4%; }
+            section { padding: 4rem 4%; }
+            .hero { padding: 100px 4% 60px; }
+            .pub-stats { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#skills">Expertise</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="profile-image-container">
-                <img src="1756174962910.png" alt="Zohaib Rana, PhD">
-            </div>
-            
-            <h1>Zohaib Rana, PhD</h1>
-            <p class="subtitle">Postdoctoral Fellow | RNA & Cancer Therapeutics</p>
-            <p>Genomics • Bioinformatics • Vaccine Design</p>
+<nav>
+    <a href="#home" class="nav-logo">Zohaib Rana</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-text">
+        <span class="hero-tag">Postdoctoral Fellow · University of Otago</span>
+        <h1>RNA Therapeutics &amp; <em>Cancer Biology</em> Researcher</h1>
+        <p class="hero-desc">Building computational pipelines and RNA-based therapeutics for glioblastoma, vaccine design, and cancer biomarker discovery. Based in Dunedin, New Zealand.</p>
+        <div class="hero-buttons">
+            <a href="#research" class="btn btn-primary">View Research</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+        <div class="hero-stats">
             <div>
-                <a href="#research" class="cta-button">View Research</a>
-                <a href="#contact" class="cta-button secondary">Get In Touch</a>
+                <span class="hero-stat-num">21</span>
+                <span class="hero-stat-label">Publications</span>
+            </div>
+            <div>
+                <span class="hero-stat-num">15.3</span>
+                <span class="hero-stat-label">Top Impact Factor</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="1756174962910.png" alt="Zohaib Rana, PhD">
+    </div>
+</section>
+
+<section id="about" class="section-alt fade-in">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+        <div class="about-text">
+            <p>I am a Postdoctoral Fellow at the University of Otago's Department of Biochemistry, working at the intersection of RNA biology, cancer genomics, and computational bioinformatics. My research focuses on developing RNA-based therapeutic strategies for brain cancers, building multi-omics biomarker pipelines, and computational vaccine design.</p>
+            <p>My journey has taken me from biomedical sciences in Sheffield to molecular pathology in Leicester, clinical lab training in Muscat and Karachi, and now to the cutting edge of RNA therapeutics in Dunedin. Alongside my research, I work as a Support Worker at Community Care Trust, providing person-centred care that grounds my science in real human impact.</p>
+            <p>As a shareholder of Amaroq Therapeutics and consultant for RNAFold.AI, I bridge academia and biotechnology — translating discoveries into real-world applications.</p>
+        </div>
+        <div class="about-cards">
+            <div class="about-card">
+                <h4>🏆 Awards & Recognition</h4>
+                <p>KiwiNet Emerging Innovator Award (2024) · TIA Pipeline Accelerator Grant PI (2025, AUD $50,000) · Support Worker of the Month (Feb 2026)</p>
+            </div>
+            <div class="about-card">
+                <h4>🔬 Research Focus</h4>
+                <p>RNA therapeutics · Glioblastoma · Multi-omics analysis · mRNA vaccine design · Cancer biomarker discovery · Neoantigen prediction</p>
+            </div>
+            <div class="about-card">
+                <h4>💡 Innovation & IP</h4>
+                <p>Co-inventor on lncRNA cancer target discovery platform (Otago Innovation Ltd, 2025) · Shareholder at Amaroq Therapeutics · Consultant at RNAFold.AI</p>
+            </div>
+            <div class="about-card">
+                <h4>🎓 Education</h4>
+                <p>PhD Pharmacology & Toxicology, University of Otago (2021) · MSc Molecular Pathology, University of Leicester (Merit) · BSc Biomedical Sciences, University of Sheffield</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>
-                I am a researcher in cancer biology, RNA therapeutics, genomics, and bioinformatics with a strong publication record in molecular biosciences. My work focuses on developing RNA-based therapeutic strategies for brain cancers and building computational pipelines for biomarker discovery and mRNA-based vaccine design.
-            </p>
-            <p>
-                Currently, I serve as a Postdoctoral Fellow at the University of Otago's Department of Biochemistry, where I lead projects on focused ultrasound-guided RNA therapeutics for glioblastoma and Parkinson's disease. I'm also building a computational vaccine design pipeline for pandemic preparedness through the NZ RNA Platform Grant.
-            </p>
-            <p>
-                My journey has taken me from biomedical sciences in Sheffield to molecular pathology in Leicester, and now to the cutting edge of RNA therapeutics in Dunedin. As a founding shareholder of Amaroq Therapeutics and consultant for RNAFold.AI, I bridge academia and biotechnology, translating discoveries into real-world applications.
-            </p>
+<section id="research" class="fade-in">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Research & Projects</h2>
+    <p class="section-subtitle">From wet lab RNA therapeutics to computational pipelines — spanning academic research, open-source tools, and translational science.</p>
+    <div class="research-grid">
+        <div class="research-card">
+            <div class="research-icon">🧬</div>
+            <h3>RNA Therapeutics for Glioblastoma</h3>
+            <p>Contributing to MBIE-funded work on focused ultrasound-guided RNA therapeutic strategies for brain cancers and Parkinson's disease, with antisense oligonucleotides and lipid nanoparticle formulation.</p>
+            <span class="research-tag">MBIE Funded</span>
         </div>
-
-        <div class="about-highlights">
-            <div class="highlight-card">
-                <h3>🏆 Awards & Recognition</h3>
-                <p>
-                    • KiwiNet Emerging Innovator Award (2024)<br>
-                    • TIA Pipeline Accelerator Grant PI (2025, AUD $50,000)
-                </p>
-            </div>
-            <div class="highlight-card">
-                <h3>🔬 Research Focus</h3>
-                <p>
-                     • RNA therapeutics<br>
-                     • Glioblastoma<br>
-                     • Multi-omics analysis<br>
-                     • Vaccine design<br>
-                     • Cancer biomarkers
-                </p>
-            </div>
-            <div class="highlight-card">
-                <h3>💡 Innovation & Impact</h3>
-                <p>
-                    • Co-inventor on lncRNA cancer target discovery platform (invention disclosure filed)<br>
-                    • Founding shareholder at Amaroq Therapeutics<br>
-                    • Consultant at RNAFold.AI<br>
-                </p>
-            </div>
+        <div class="research-card">
+            <div class="research-icon">💉</div>
+            <h3>Computational Vaccine Design</h3>
+            <p>Building multi-lineage influenza vaccine pipelines (H1N1, H3N2, VicB) using phylogenetics, evolutionary distance analysis, and immunoinformatics through the NZ RNA Platform Grant.</p>
+            <span class="research-tag">NZ RNA Platform</span>
         </div>
-    </section>
-
-    <section id="research">
-        <h2>Research & Projects</h2>
-        <div class="research-grid">
-            <div class="research-card">
-                <div class="research-image">🧬</div>
-                <div class="research-content">
-                    <h3>RNA Therapeutics for Glioblastoma</h3>
-                    <p>Leading MBIE-funded projects developing focused ultrasound-guided RNA therapeutic strategies for brain cancers and Parkinson's disease with multidisciplinary teams.</p>
-                    <a href="#contact" class="research-link">Learn More →</a>
-                </div>
-            </div>
-            <div class="research-card">
-                <div class="research-image">💉</div>
-                <div class="research-content">
-                    <h3>Computational Vaccine Design</h3>
-                    <p>Building multi-omics pipelines for biomarker discovery and mRNA-based vaccine development for pandemic preparedness through NZ RNA Platform Grant.</p>
-                    <a href="#contact" class="research-link">Learn More →</a>
-                </div>
-            </div>
-            <div class="research-card">
-                <div class="research-image">🎯</div>
-                <div class="research-content">
-                    <h3>Cancer Biomarker Discovery</h3>
-                    <p>Integrating genomics, bioinformatics, and machine learning to identify novel RNA targets for cancer therapeutics. Co-inventor on lncRNA target discovery platform.</p>
-                    <a href="#contact" class="research-link">Learn More →</a>
-                </div>
-            </div>
+        <div class="research-card">
+            <div class="research-icon">🎯</div>
+            <h3>GBM Neoantigen Discovery</h3>
+            <p>Computational pipeline for clonal neoantigen identification in IDH-wildtype GBM using TCGA mutation data, VAF-based clonality filtering, and NetMHCpan-4.2 HLA binding prediction.</p>
+            <span class="research-tag">Preprint 2025</span>
         </div>
-    </section>
-
-    <section id="skills">
-        <h2>Expertise & Skills</h2>
-        <div class="skills-container">
-            <span class="skill-tag">RNA Therapeutics</span>
-            <span class="skill-tag">Cancer Biology</span>
-            <span class="skill-tag">Glioblastoma Research</span>
-            <span class="skill-tag">Genomics</span>
-            <span class="skill-tag">Bioinformatics</span>
-            <span class="skill-tag">Multi-omics Analysis</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Vaccine Design (mRNA)</span>
-            <span class="skill-tag">R & Python</span>
-            <span class="skill-tag">Drug Discovery</span>
-            <span class="skill-tag">HDAC Inhibitors</span>
-            <span class="skill-tag">Molecular Biology</span>
-            <span class="skill-tag">Data Analysis</span>
-            <span class="skill-tag">Grant Writing</span>
-            <span class="skill-tag">Project Management</span>
+        <div class="research-card">
+            <div class="research-icon">🔗</div>
+            <h3>ceRNA Networks in Glioblastoma</h3>
+            <p>Published analysis of competing endogenous RNA networks revealing clinically relevant hub lncRNAs in GBM across TCGA and GTEx cohorts using ENCORI and miRTarBase interaction data.</p>
+            <span class="research-tag">Published 2026</span>
         </div>
-    </section>
+        <div class="research-card">
+            <div class="research-icon">📊</div>
+            <h3>Survival Biomarker Frameworks</h3>
+            <p>Reproducible cross-cohort survival biomarker discovery pipeline integrating TCGA, GTEx, and CGGA with Cox regression, permutation benchmarking, and meta-analysis for robust biomarker identification.</p>
+            <span class="research-tag">Open Source</span>
+        </div>
+        <div class="research-card">
+            <div class="research-icon">🛒</div>
+            <h3>ChurBro</h3>
+            <p>Real-world web app comparing meat prices across Dunedin supermarkets (New World, PAK'nSAVE, Woolworths). Built with Playwright scrapers, static JSON API, and GitHub Pages hosting.</p>
+            <a href="https://churbro.net" target="_blank" style="display:inline-block; margin-top:0.75rem; font-size:0.82rem; font-weight:600; color:var(--teal); text-decoration:none;">Visit churbro.net →</a>
+        </div>
+    </div>
+</section>
 
-    <section id="publications">
-        <h2>Publications & Impact</h2>
-        <div class="publications-content">
-            <div class="pub-stats">
-                <div class="stat-card">
-                    <div class="number">20+</div>
-                    <div class="label">Peer-Reviewed Publications</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">1</div>
-                    <div class="label">Invention Disclosure Filed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">$50K</div>
-                    <div class="label">TIA Grant (AUD) as PI</div>
-                </div>
-                <div class="stat-card">
-                    <div class="number">15.3</div>
-                    <div class="label">Highest Impact Factor (Angew Chem)</div>
-                </div>
-            </div>
-            <div class="about-content">
-                <p>
-                    My research has been published in prestigious journals including <em>Angewandte Chemie International Edition</em> (IF: 15.3), <em>Biomedicines</em>, <em>Pharmaceuticals</em>, <em>ACS Chemical Neuroscience</em>, and <em>Anti-Cancer Drugs</em>. My work spans cancer therapeutics, HDAC inhibitors, RNA biology, and computational drug discovery.
-                </p>
-                <p>
-                    <strong>Recent highlights:</strong> Comprehensive ceRNA profiling in glioblastoma (submitted to <em>Bioinformatics and Biology Insights</em>, August 2025), cross-cohort reproducibility frameworks for survival biomarker discovery (in preparation for <em>BMC Bioinformatics</em>), and multi-objective immune gene signatures for glioblastoma therapeutics (in preparation).
-                </p>
-                <p>
-                    <strong>Key publications:</strong> Novel HDAC inhibitors for metastatic castration-resistant prostate cancer (<em>Pharmaceuticals</em>, 2021), organorhodium anticancer agents (<em>Angew Chem Int Ed</em>, 2020), and comprehensive reviews on HDAC inhibitor treatment strategies (<em>Biomedicines</em>, 2020).
-                </p>
-                <p style="text-align: center; margin-top: 2rem;">
-                    <a href="https://scholar.google.com/citations?user=tHFOZsAAAAAJ&hl=en" class="research-link" target="_blank">View Complete Publication List on Google Scholar →</a>
-                </p>
+<section id="skills" class="section-alt fade-in">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <p class="section-subtitle">A broad toolkit across wet lab, computational, and clinical domains.</p>
+    <div class="skills-wrap">
+        <span class="skill">RNA Therapeutics</span>
+        <span class="skill">Antisense Oligonucleotides</span>
+        <span class="skill">Lipid Nanoparticles</span>
+        <span class="skill">Cancer Biology</span>
+        <span class="skill">Glioblastoma</span>
+        <span class="skill">Bioinformatics</span>
+        <span class="skill">Multi-omics Analysis</span>
+        <span class="skill">WGCNA</span>
+        <span class="skill">DESeq2</span>
+        <span class="skill">Survival Analysis</span>
+        <span class="skill">R</span>
+        <span class="skill">Python</span>
+        <span class="skill">Playwright</span>
+        <span class="skill">Machine Learning</span>
+        <span class="skill">mRNA Vaccine Design</span>
+        <span class="skill">NetMHCpan</span>
+        <span class="skill">TCGA / GTEx / CGGA</span>
+        <span class="skill">HDAC Inhibitors</span>
+        <span class="skill">Drug Discovery</span>
+        <span class="skill">Grant Writing</span>
+        <span class="skill">Person-Centred Care</span>
+        <span class="skill">Clinical Data Analysis</span>
+    </div>
+</section>
+
+<section id="publications" class="fade-in">
+    <p class="section-label">Output</p>
+    <h2 class="section-title">Publications & Impact</h2>
+    <p class="section-subtitle">21 peer-reviewed publications spanning RNA biology, cancer therapeutics, computational genomics, and drug discovery.</p>
+    <div class="pub-stats">
+        <div class="pub-stat">
+            <span class="pub-stat-num">21</span>
+            <span class="pub-stat-label">Peer-Reviewed Publications</span>
+        </div>
+        <div class="pub-stat">
+            <span class="pub-stat-num">15.3</span>
+            <span class="pub-stat-label">Highest Impact Factor</span>
+        </div>
+        <div class="pub-stat">
+            <span class="pub-stat-num">1</span>
+            <span class="pub-stat-label">Patent Disclosure Filed</span>
+        </div>
+        <div class="pub-stat">
+            <span class="pub-stat-num">$50K</span>
+            <span class="pub-stat-label">TIA Grant as PI (AUD)</span>
+        </div>
+    </div>
+    <div class="pub-list">
+        <div class="pub-item">
+            <span class="pub-year">2026</span>
+            <div>
+                <p class="pub-title">Comprehensive ceRNA Profiling Uncovers Clinically Relevant Hub lncRNAs in Glioblastoma</p>
+                <p class="pub-meta">Rana Z*, Grans J. <span class="pub-journal">Bioinformatics and Biology Insights</span> (IF: 3.8) · *Corresponding author</p>
+                <a href="https://doi.org/10.1177/11779322251411169" target="_blank" class="pub-link">doi: 10.1177/11779322251411169 →</a>
             </div>
         </div>
-    </section>
-
-    <section id="music">
-        <h2>Music & Creative Pursuits</h2>
-        <div class="about-content">
-            <p style="text-align: center; margin-bottom: 2rem;">
-                Beyond the laboratory, I find balance and inspiration through music. Whether composing, performing, or simply exploring different genres, music provides a creative counterpoint to scientific work and offers a unique way to connect with others.
-            </p>
-            
-            <!-- Spotify Embed Section -->
-            <div style="max-width: 600px; margin: 2rem auto; text-align: center;">
-                <h3 style="color: #1a202c; margin-bottom: 1rem;">🎧 Listen on Spotify</h3>
-                <iframe style="border-radius:12px; width: 100%; max-width: 500px;" 
-                        src="https://open.spotify.com/embed/track/6S5txxsisWuILDyNzRt6kA?utm_source=generator" 
-                        height="152" 
-                        frameBorder="0" 
-                        allowfullscreen="" 
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy"></iframe>
-            </div>
-
-            <!-- Performance Videos -->
-            <div style="margin-top: 3rem;">
-                <h3 style="color: #1a202c; text-align: center; margin-bottom: 1rem;">
-                    🎸 Live Performances <span class="coming-soon">Coming Soon</span>
-                </h3>
-                <p style="text-align: center; color: #4a5568; margin-bottom: 2rem;">
-                    Music covers and performances will be uploaded to YouTube soon. Stay tuned!
-                </p>
-                
-                <!-- Placeholder for future videos - will be added when uploaded -->
-                <!-- 
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-container">
-                            <iframe width="100%" height="315" 
-                                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" 
-                                    title="Performance Title" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <p style="text-align: center; padding: 1rem; color: #4a5568; font-weight: 600;">Performance Title</p>
-                    </div>
-                </div>
-                -->
-            </div>
-
-            <div class="about-highlights" style="margin-top: 3rem;">
-                <div class="highlight-card">
-                    <h3>🎵 Musical Expression</h3>
-                    <p>Exploring the intersection of creativity and analytical thinking through musical composition and performance</p>
-                </div>
-                <div class="highlight-card">
-                    <h3>🎸 Live Performances</h3>
-                    <p>Connecting with audiences through music, sharing cultural traditions and original compositions</p>
-                </div>
-                <div class="highlight-card">
-                    <h3>🎼 Creative Balance</h3>
-                    <p>Finding harmony between scientific rigor and artistic expression in daily life</p>
-                </div>
+        <div class="pub-item">
+            <span class="pub-year">2025</span>
+            <div>
+                <p class="pub-title">Computational Identification of Clonal Neoantigens in IDH-Wildtype Glioblastoma Through Integrated Genomic Filtering and HLA Prediction</p>
+                <p class="pub-meta">Rana Z. <span class="pub-journal">Research Square</span> (Preprint)</p>
+                <a href="https://doi.org/10.21203/rs.3.rs-8351369/v1" target="_blank" class="pub-link">doi: 10.21203/rs.3.rs-8351369/v1 →</a>
             </div>
         </div>
-    </section>
-
-    <section id="community">
-        <h2>Community Engagement</h2>
-        <div class="about-content">
-            <p>
-                I believe in giving back to the community and making science accessible to everyone. Through various outreach initiatives, I work to inspire the next generation of scientists and support underserved communities.
-            </p>
-        </div>
-        <div class="research-grid" style="margin-top: 3rem;">
-            <div class="research-card">
-                <div class="research-image">📻</div>
-                <div class="research-content">
-                    <h3>Chit Chat with PAO - Radio Host</h3>
-                    <p>Co-host of a fortnightly radio show on OAR 105.4FM exploring culture, wellbeing, and science, fostering dialogue across diverse communities. Available on Spotify, Apple Podcasts, and FM radio (2024-Present).</p>
-                </div>
-            </div>
-            <div class="research-card">
-                <div class="research-image">🔬</div>
-                <div class="research-content">
-                    <h3>Science Outreach & Education</h3>
-                    <p>Delivered interactive workshops at the NZ International Science Festival and organized STEM education events at Bait al-Hikam, introducing children from refugee and migrant communities to scientific concepts.</p>
-                </div>
-            </div>
-            <div class="research-card">
-                <div class="research-image">🎗️</div>
-                <div class="research-content">
-                    <h3>Cancer Society Volunteer</h3>
-                    <p>Supported cancer awareness campaigns, community fundraising, and patient-support activities with Cancer Society New Zealand (2018-2020).</p>
-                </div>
-            </div>
-            <div class="research-card">
-                <div class="research-image">💭</div>
-                <div class="research-content">
-                    <h3>Mental Health Advocacy</h3>
-                    <p>Wrote commentary articles in The Express Tribune on youth mental health and wellbeing, raising awareness on community health issues (2014-2016).</p>
-                    <a href="https://tribune.com.pk/author/4141/zohaib-amjad" class="research-link" target="_blank">Read Articles (Part 1) →</a>
-                    <span style="margin: 0 0.5rem;">|</span>
-                    <a href="https://tribune.com.pk/author/4369/zohaib-amjad" class="research-link" target="_blank">Read Articles (Part 2) →</a>
-                </div>
+        <div class="pub-item">
+            <span class="pub-year">2022</span>
+            <div>
+                <p class="pub-title">Exploring the Mechanism and Suggesting HDAC Inhibitors in AR-null Prostate Cancer Using Multivariate Analyses and Data-Mining Techniques</p>
+                <p class="pub-meta">Rana Z, Smith PF, Rosengren RJ. <span class="pub-journal">Bioinformatics and Biology Insights</span> (IF: 2.1)</p>
             </div>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <p>
-                I'm always open to discussing new research collaborations, speaking opportunities, or consulting projects in RNA therapeutics, cancer biology, and computational biology.
-            </p>
-            <div class="contact-info">
-                <p><strong>📍 Location:</strong> Dunedin, New Zealand</p>
-                <p><strong>📧 Email:</strong> Zohaib.rana@otago.ac.nz</p>
-                <p><strong>📱 Phone:</strong> +64 21 0226 1961</p>
-            </div>
-            <div class="contact-links">
-                <a href="https://scholar.google.com/citations?user=tHFOZsAAAAAJ&hl=en" target="_blank">Google Scholar</a>
-                <a href="https://orcid.org/0000-0002-5171-501X" target="_blank">ORCID</a>
-                <a href="https://www.linkedin.com/in/zohaib-rana" target="_blank">LinkedIn</a>
-                <a href="mailto:Zohaib.rana@otago.ac.nz">Email Me</a>
+        <div class="pub-item">
+            <span class="pub-year">2021</span>
+            <div>
+                <p class="pub-title">Anti-proliferative, Anti-angiogenic and Safety Profiles of Novel HDAC Inhibitors for Metastatic Castration-Resistant Prostate Cancer</p>
+                <p class="pub-meta">Rana Z et al. <span class="pub-journal">Pharmaceuticals</span> (IF: 5.9)</p>
             </div>
         </div>
-    </section>
+        <div class="pub-item">
+            <span class="pub-year">2020</span>
+            <div>
+                <p class="pub-title">A Multitargeted Approach: Organorhodium Anticancer Agent Based on Vorinostat as a Potent Histone Deacetylase Inhibitor</p>
+                <p class="pub-meta">Hanif M, Arshad J, Rana Z et al. <span class="pub-journal">Angewandte Chemie International Edition</span> (IF: 15.3)</p>
+            </div>
+        </div>
+    </div>
+    <p style="margin-top: 2rem; text-align: center;">
+        <a href="https://scholar.google.com/citations?user=tHFOZsAAAAAJ&hl=en" target="_blank" class="btn btn-outline">View all publications on Google Scholar →</a>
+    </p>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Zohaib Rana, PhD. All rights reserved.</p>
-    </footer>
+<section id="community" class="section-alt fade-in">
+    <p class="section-label">Beyond the Lab</p>
+    <h2 class="section-title">Community Engagement</h2>
+    <p class="section-subtitle">Science, culture, and care — connecting communities in Dunedin and beyond.</p>
+    <div class="community-grid">
+        <div class="community-card">
+            <span class="icon">📻</span>
+            <h3>Radio Host — Chit Chat with PAO</h3>
+            <p>Fortnightly programme on OAR FM 105.4 exploring culture, science, and social issues. Recipient of the Multilingual Programme Award. Available on Spotify and Apple Podcasts (2024–Present).</p>
+        </div>
+        <div class="community-card">
+            <span class="icon">🔬</span>
+            <h3>Science Outreach</h3>
+            <p>Workshops at the NZ International Science Festival (2025) and STEM events at Bait al-Hikam for refugee and migrant communities. Making science accessible to those who need it most.</p>
+        </div>
+        <div class="community-card">
+            <span class="icon">🤝</span>
+            <h3>Pakistan Community of Otago</h3>
+            <p>President (2024–2025) · Sports & Wellbeing Officer (2022–Present). Led events with 1500+ attendees, secured community funding, featured in Otago Daily Times.</p>
+        </div>
+        <div class="community-card">
+            <span class="icon">🎗️</span>
+            <h3>Cancer Society Volunteer</h3>
+            <p>Supported cancer awareness campaigns, fundraising, and patient-support activities with Cancer Society New Zealand (2018–2020).</p>
+        </div>
+        <div class="community-card">
+            <span class="icon">💭</span>
+            <h3>Mental Health Advocacy</h3>
+            <p>Wrote youth mental health commentary in The Express Tribune, raising awareness of community health challenges (2014–2016).</p>
+            <a href="https://tribune.com.pk/author/4141/zohaib-amjad" target="_blank">Read articles →</a>
+        </div>
+        <div class="community-card">
+            <span class="icon">🏏</span>
+            <h3>Cricket</h3>
+            <p>Selected for Oman Under-19 national cricket team (2008). Represented Sri Lankan School Muscat (2006–2010). Recipient of School Colours Award for sporting achievement.</p>
+        </div>
+    </div>
+</section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+<section id="music" class="fade-in">
+    <p class="section-label">Creative</p>
+    <h2 class="section-title">Music</h2>
+    <div class="music-grid">
+        <div class="music-text">
+            <p>Beyond the laboratory, music is where I find balance. I perform Urdu and Punjabi songs at community events and have released original music on Spotify.</p>
+            <p>Music connects me to culture and community in ways that science alone cannot — it is both a personal anchor and a way to share something authentic with the people around me.</p>
+            <a href="https://open.spotify.com/artist/" target="_blank" class="btn btn-outline" style="display:inline-block; margin-top: 0.5rem;">Listen on Spotify →</a>
+        </div>
+        <div>
+            <iframe style="border-radius:12px; width: 100%;" 
+                    src="https://open.spotify.com/embed/track/6S5txxsisWuILDyNzRt6kA?utm_source=generator" 
+                    height="152" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section-alt fade-in">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+        <div class="contact-text">
+            <p>Open to research collaborations, speaking engagements, and consulting projects in RNA therapeutics, cancer biology, and computational genomics.</p>
+            <div class="contact-detail">
+                <span>📍</span>
+                <span>Dunedin, New Zealand</span>
+            </div>
+            <div class="contact-detail">
+                <span>📧</span>
+                <span>Zohaib.rana@otago.ac.nz</span>
+            </div>
+            <div class="contact-detail">
+                <span>📱</span>
+                <span>+64 21 0226 1961</span>
+            </div>
+        </div>
+        <div class="contact-links-grid">
+            <a href="https://scholar.google.com/citations?user=tHFOZsAAAAAJ&hl=en" target="_blank" class="contact-link">📚 Google Scholar</a>
+            <a href="https://orcid.org/0000-0002-5171-501X" target="_blank" class="contact-link">🔬 ORCID</a>
+            <a href="https://www.linkedin.com/in/zohaib-rana" target="_blank" class="contact-link">💼 LinkedIn</a>
+            <a href="https://github.com/zz153" target="_blank" class="contact-link">💻 GitHub</a>
+            <a href="mailto:Zohaib.rana@otago.ac.nz" class="contact-link">✉️ Email Me</a>
+            <a href="https://churbro.net" target="_blank" class="contact-link">🥩 ChurBro</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Zohaib Rana, PhD · Dunedin, New Zealand · <a href="https://zz153.github.io">zz153.github.io</a></p>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
 
-        // Add scroll effect to nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                nav.style.padding = '1rem 5%';
-            } else {
-                nav.style.padding = '1.5rem 5%';
-            }
-        });
-    </script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        nav.style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+    });
+</script>
 </body>
 </html>
